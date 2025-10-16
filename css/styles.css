@@ -38,8 +38,7 @@ body.home-page::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
@@ -81,6 +80,15 @@ body:not(.home-page) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
 }
 
 .btn {
@@ -135,48 +143,45 @@ body:not(.home-page) {
 .logo {
   display: block;
   width: 90%;
-  max-width: 600px;
+  max-width: 500px;
   height: auto;
-  margin: 1rem auto;
+  margin: 0.5rem auto;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
 }
 
 @media (min-width: 768px) {
   .logo {
-    max-width: 700px;
+    max-width: 600px;
   }
 }
 
 @media (min-width: 1024px) {
   .logo {
-    max-width: 800px;
+    max-width: 700px;
   }
 }
 
 .participating-link {
   display: block;
   text-align: center;
-  margin: 1.5rem 0 2rem;
+  margin: 1rem 0 2rem;
   color: var(--cream);
   text-decoration: none;
   font-weight: 600;
   font-size: 1.2rem;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .participating-link {
+    font-size: 1.1rem;
+    margin: 0.75rem 0 1.5rem;
+  }
 }
 
 .participating-link:hover {
   color: var(--pumpkin);
-}
-
-.footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: var(--cream);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  position: relative;
-  z-index: 1;
 }
 
 .back-link {
