@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Participating Houses - Red Bird Trick-or-Treat Trail</title>
+  <meta name="description" content="View all participating houses in the Red Bird neighborhood trick-or-treat trail with their fun theme names and addresses.">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <a href="/" class="back-link">← Back to Home</a>
+
+    <h1>Participating Houses</h1>
+
+    <section id="houses" class="houses-grid">
+      <!-- Houses will be loaded here via JavaScript -->
+    </section>
+  </main>
+
+  <script type="module">
+    import { parse } from 'https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js';
+
+    fetch('/data/participants.csv')
+      .then(r => r.text())
+      .then(t => parse(t, { header: true }).data)
+      .then(rows => {
+        const list = document.querySelector('#houses');
+
+        // Filter and sort houses with theme names
+        const houses = rows
+          .filter(r => r['Would you like to give your house a fun "Trick-or-Treat Name" for the map?']?.trim())
+          .map(r => ({
+            name: r['Would you like to give your house a fun "Trick-or-Treat Name" for the map?'].trim(),
+            address: r['Address ']?.trim() || '',
+            household: r['Household Name']?.trim() || ''
+          }))
+          .sort((a, b) => a.name.localeCompare(b.name));
+
+        houses.forEach(house => {
+          const blurb = `A ${house.name} stop with festive lights and friendly frights — don't miss the treats!`;
+          list.insertAdjacentHTML('beforeend', `
+            <article class="house card">
+              <h3>${house.name}</h3>
+              <p class="addr">${house.address}</p>
+              <p class="desc">${blurb}</p>
+            </article>`);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading participating houses:', error);
+        document.querySelector('#houses').innerHTML = '<p>Sorry, unable to load the list of participating houses at this time.</p>';
+      });
+  </script>
+</body>
+</html></instructions>
+</edit_file>
