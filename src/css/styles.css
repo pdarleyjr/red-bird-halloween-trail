@@ -89,10 +89,10 @@ body:not(.home-page) {
   backdrop-filter: saturate(120%) blur(2px);
 }
 
-/* How It Works page scrim with more opacity for better text visibility */
+/* How It Works page scrim with light opacity for background visibility */
 .bg-how-it-works .scrim {
-  background: rgba(30, 28, 26, 0.75);
-  backdrop-filter: saturate(120%) blur(3px);
+  background: rgba(30, 28, 26, 0.35);
+  backdrop-filter: saturate(120%) blur(2px);
   min-height: 100vh;
 }
 
