@@ -5,17 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Interactive Map - Red Bird Trick-or-Treat Trail</title>
   <meta name="description" content="View the interactive map of all participating houses in the Red Bird neighborhood trick-or-treat trail.">
+  <meta property="og:title" content="Interactive Map - Red Bird Trick-or-Treat Trail">
+  <meta property="og:description" content="View the interactive map of all participating houses in the Red Bird neighborhood trick-or-treat trail.">
+  <meta property="og:image" content="assets/flyer/flyer.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/brand/Red_Bird_Logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#D97C1E">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <main class="container">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <main class="container" id="main-content">
     <a href="index.html" class="back-link">← Back to Home</a>
 
     <h1>Interactive Map</h1>
 
     <div class="map-wrap" aria-label="Interactive Map of Red Bird Trick-or-Treat Trail">
-      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1ExTFwDBAKnengmkfMcVtjvAvi_MTw3s&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
+      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1ExTFwDBAKnengmkfMcVtjvAvi_MTw3s&ehbc=2E312F&noprof=1" width="640" height="480" title="Red Bird interactive map (Google My Maps)"></iframe>
     </div>
+
+    <div class="floating-actions" aria-hidden="false">
+      <button type="button" class="action-btn" id="rb-find-me">Find My Location</button>
+      <button type="button" class="action-btn" id="rb-share-map">Share Map</button>
+    </div>
+
+    <a href="index.html" class="home-fab" title="Back to home">🏠</a>
+
+    <script>
+      // Geolocation helper (opens Google Maps with current location near the iframe map)
+      document.getElementById('rb-find-me').addEventListener('click', async () => {
+        if (!navigator.geolocation) {
+          alert('Geolocation is not supported by your browser.');
+          return;
+        }
+        try {
+          const pos = await new Promise((res, rej) => navigator.geolocation.getCurrentPosition(res, rej, {timeout:10000}));
+          const { latitude, longitude } = pos.coords;
+          // Open a new Google Maps window centered on user's location so they can orient themselves
+          const url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+          window.open(url, '_blank', 'noopener');
+        } catch (err) {
+          alert('Unable to determine your location. Please ensure location services are enabled.');
+        }
+      });
+
+      // Share the Google My Maps link using Web Share API if available, otherwise copy to clipboard
+      document.getElementById('rb-share-map').addEventListener('click', async () => {
+        const mapUrl = 'https://www.google.com/maps/d/u/0/viewer?mid=1ExTFwDBAKnengmkfMcVtjvAvi_MTw3s';
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: 'Red Bird Trick-or-Treat Trail Map', url: mapUrl });
+            return;
+          } catch (e) {
+            // user cancelled or share failed — fallback to clipboard
+          }
+        }
+        try {
+          await navigator.clipboard.writeText(mapUrl);
+          alert('Map link copied to clipboard');
+        } catch (e) {
+          prompt('Copy this map link', mapUrl);
+        }
+      });
+    </script>
   </main>
 </body>
 </html>

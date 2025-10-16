@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pdarleyjr.github.io/red-bird-halloween-trail/sitemap.xml

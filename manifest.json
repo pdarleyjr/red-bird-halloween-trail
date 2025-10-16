@@ -1,0 +1,16 @@
+{
+  "name": "Red Bird Trick-or-Treat Trail",
+  "short_name": "Red Bird Trail",
+  "description": "Join the Red Bird neighborhood for a family-friendly Halloween trick-or-treat trail with participating houses and festive decorations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#EFE7D8",
+  "theme_color": "#D97C1E",
+  "icons": [
+    {
+      "src": "assets/brand/Red_Bird_Logo.png",
+      "sizes": "800x600",
+      "type": "image/png"
+    }
+  ]
+}
