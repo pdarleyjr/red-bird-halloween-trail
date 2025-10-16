@@ -3,5 +3,6 @@ package-lock.json
 package.json
 *.log
 .DS_Store
-Thumbs.db</instructions>
-</edit_file>
+Thumbs.db
+src/
+public/
