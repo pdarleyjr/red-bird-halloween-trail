@@ -5,10 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Participating Houses - Red Bird Trick-or-Treat Trail</title>
   <meta name="description" content="View all participating houses in the Red Bird neighborhood trick-or-treat trail with their fun theme names and addresses.">
+  <meta property="og:title" content="Participating Houses - Red Bird Trick-or-Treat Trail">
+  <meta property="og:description" content="View all participating houses in the Red Bird neighborhood trick-or-treat trail with their fun theme names and addresses.">
+  <meta property="og:image" content="assets/flyer/flyer.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/brand/Red_Bird_Logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#D97C1E">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <main class="container">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <main class="container" id="main-content">
     <a href="index.html" class="back-link">← Back to Home</a>
 
     <h1>Participating Houses</h1>
@@ -52,5 +60,6 @@
         document.querySelector('#houses').innerHTML = '<p>Sorry, unable to load the list of participating houses at this time.</p>';
       });
   </script>
+    <a href="index.html" class="home-fab" title="Back to home">🏠</a>
 </body>
 </html>

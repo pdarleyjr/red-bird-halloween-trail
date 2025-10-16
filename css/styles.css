@@ -250,6 +250,127 @@ body:not(.home-page) {
   border: 0;
 }
 
+/* Skip-to-content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 0;
+  z-index: 99999;
+  padding: 0.5rem 1rem;
+  background: var(--pumpkin);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Subtle page and element animations */
+@keyframes rb-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: rb-fade-in 420ms ease-out both;
+}
+
+/* Floating home button (visible on non-home pages) */
+.home-fab {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--pumpkin);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  font-size: 20px;
+}
+.home-fab:focus,
+.home-fab:hover {
+  transform: translateY(-2px);
+}
+
+/* Small view counter shown on the homepage */
+.view-counter {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  z-index: 9999;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Halloween countdown timer on homepage */
+.countdown-timer {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 9999;
+  background: rgba(217, 124, 30, 0.95);
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.countdown-label {
+  font-size: 0.7rem;
+  opacity: 0.9;
+  margin-bottom: 0.2rem;
+}
+.countdown-display {
+  font-size: 1rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 768px) {
+  .countdown-timer {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .countdown-display {
+    font-size: 0.85rem;
+  }
+}
+
+/* Floating action group for map page (find/share) */
+.floating-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.floating-actions .action-btn {
+  appearance: none;
+  border: 0;
+  background: rgba(255,255,255,0.95);
+  color: var(--charcoal);
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  font-weight: 600;
+  cursor: pointer;
+}
+.floating-actions .action-btn:active { transform: translateY(1px); }
+
+
 /* Download page */
 .download-btn {
   display: inline-block;

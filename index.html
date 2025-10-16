@@ -5,12 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Red Bird Trick-or-Treat Trail</title>
   <meta name="description" content="Join the Red Bird neighborhood for a family-friendly Halloween trick-or-treat trail with participating houses and festive decorations.">
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Red Bird Trick-or-Treat Trail">
+  <meta property="og:description" content="Join the Red Bird neighborhood for a family-friendly Halloween trick-or-treat trail with participating houses and festive decorations.">
+  <meta property="og:image" content="assets/flyer/flyer.png">
+  <meta property="og:type" content="event">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Red Bird Trick-or-Treat Trail">
+  <meta name="twitter:description" content="Join the Red Bird neighborhood for a family-friendly Halloween trick-or-treat trail.">
+  <link rel="icon" href="assets/brand/Red_Bird_Logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#D97C1E">
   <link rel="preload" as="image" href="assets/brand/Red_Bird_Logo.png">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="home-page">
-  <main class="container">
-    <img src="assets/brand/Red_Bird_Logo.png" alt="Red Bird Trick-or-Treat Trail Logo" class="logo" width="800" height="600">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <main class="container" id="main-content">
+    <img src="assets/brand/Red_Bird_Logo.png" alt="Red Bird Trick-or-Treat Trail Logo" class="logo" width="800" height="600" loading="eager">
 
     <div class="btn-grid">
       <a href="how-it-works.html" class="btn" aria-label="Learn how the Red Bird Trick-or-Treat Trail works">
@@ -19,7 +31,8 @@
              src="assets/buttons/how_it_works-320.webp"
              srcset="assets/buttons/how_it_works-320.webp 320w,
                      assets/buttons/how_it_works-480.webp 480w"
-             sizes="(max-width:768px) 250px, 200px">
+             sizes="(max-width:768px) 250px, 200px"
+             loading="lazy">
       </a>
 
       <a href="interactive-map.html" class="btn" aria-label="View the interactive map of participating houses">
@@ -28,7 +41,8 @@
              src="assets/buttons/interactive_map-320.webp"
              srcset="assets/buttons/interactive_map-320.webp 320w,
                      assets/buttons/interactive_map-480.webp 480w"
-             sizes="(max-width:768px) 250px, 200px">
+             sizes="(max-width:768px) 250px, 200px"
+             loading="lazy">
       </a>
 
       <a href="download.html" class="btn" aria-label="Download the trail flyer and map">
@@ -37,11 +51,71 @@
              src="assets/buttons/download-320.webp"
              srcset="assets/buttons/download-320.webp 320w,
                      assets/buttons/download-480.webp 480w"
-             sizes="(max-width:768px) 250px, 200px">
+             sizes="(max-width:768px) 250px, 200px"
+             loading="lazy">
       </a>
     </div>
 
     <a href="participating-houses.html" class="participating-link">Participating Houses</a>
   </main>
+
+  <div class="view-counter fade-in" id="rb-view-counter" aria-hidden="true">Views: <span id="rb-counter">—</span></div>
+
+  <div class="countdown-timer fade-in" id="rb-countdown" aria-live="polite">
+    <div class="countdown-label">Halloween Night In:</div>
+    <div class="countdown-display" id="rb-countdown-display">Loading...</div>
+  </div>
+
+  <script>
+    // Lightweight view counter using CountAPI with localStorage fallback
+    (function(){
+      const key = 'red-bird-trail-main';
+      const counterEl = document.getElementById('rb-counter');
+
+      // Try CountAPI first (no key/secret needed for public counters)
+      fetch('https://api.countapi.xyz/hit/pdarleyjr/red-bird-trail')
+        .then(r => r.json())
+        .then(data => {
+          if (data && data.value != null) {
+            counterEl.textContent = data.value;
+            try { localStorage.setItem(key, data.value); } catch(e){}
+          }
+        })
+        .catch(() => {
+          // fallback to localStorage stored value or 1
+          try {
+            const v = parseInt(localStorage.getItem(key) || '1', 10) + 1;
+            localStorage.setItem(key, v);
+            counterEl.textContent = v;
+          } catch(e) { counterEl.textContent = '—'; }
+        });
+    })();
+
+    // Halloween countdown timer (Oct 31, 2025 at 6pm local time)
+    (function(){
+      const displayEl = document.getElementById('rb-countdown-display');
+      const targetDate = new Date('2025-10-31T18:00:00');
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          displayEl.textContent = '🎃 Happy Halloween! 🎃';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        displayEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
 </body>
 </html>
