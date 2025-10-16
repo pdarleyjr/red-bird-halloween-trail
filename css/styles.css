@@ -66,9 +66,34 @@ body:not(.home-page) {
   }
 }
 
+/* How It Works page background */
+.bg-how-it-works {
+  background-image: url('../assets/bg/howitworks_bg_image.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* Mobile optimization for How It Works background */
+@media (max-width: 768px) {
+  .bg-how-it-works {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+}
+
 .scrim {
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: saturate(120%) blur(2px);
+}
+
+/* How It Works page scrim with more opacity for better text visibility */
+.bg-how-it-works .scrim {
+  background: rgba(30, 28, 26, 0.75);
+  backdrop-filter: saturate(120%) blur(3px);
+  min-height: 100vh;
 }
 
 .container {
@@ -197,7 +222,31 @@ body:not(.home-page) {
   color: var(--pumpkin);
 }
 
+/* How It Works page back link - bright for dark background */
+.bg-how-it-works .back-link {
+  color: var(--pumpkin);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+}
+
+.bg-how-it-works .back-link:hover {
+  color: var(--cream);
+}
+
 /* How it works page */
+.bg-how-it-works h1 {
+  color: var(--pumpkin);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9), 0 0 20px rgba(217, 124, 30, 0.5);
+  font-size: 2.5rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .bg-how-it-works h1 {
+    font-size: 2rem;
+  }
+}
+
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr;
