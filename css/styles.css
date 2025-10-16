@@ -22,9 +22,36 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   color: var(--charcoal);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Homepage background with overlay */
+body.home-page {
+  background: url('../assets/bg/BACKGROUND.png') center/cover no-repeat fixed;
+}
+
+body.home-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+body.home-page .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Other pages background */
+body:not(.home-page) {
   background: var(--bg-grad) fixed;
   background-attachment: fixed;
-  min-height: 100vh;
 }
 
 .bg-wood {
@@ -48,64 +75,94 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn {
   display: block;
-  margin: 0.5rem 0;
+  margin: 0.5rem;
   border: none;
   background: none;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .btn:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .btn img {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Homepage specific button grid - horizontal row */
 .btn-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
-  margin: 2rem 0;
+  margin: 2rem 0 1rem;
+  max-width: 900px;
 }
 
-@media (min-width: 768px) {
+.btn-grid .btn {
+  flex: 0 0 auto;
+  max-width: 200px;
+}
+
+@media (max-width: 768px) {
   .btn-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .btn-grid .btn {
+    max-width: 250px;
   }
 }
 
+/* Logo - larger on homepage */
 .logo {
   display: block;
-  max-width: 300px;
+  width: 90%;
+  max-width: 600px;
   height: auto;
-  margin: 2rem auto;
+  margin: 1rem auto;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
 }
 
 @media (min-width: 768px) {
   .logo {
-    max-width: 400px;
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo {
+    max-width: 800px;
   }
 }
 
 .participating-link {
   display: block;
   text-align: center;
-  margin: 1rem 0 2rem;
-  color: var(--terra);
+  margin: 1.5rem 0 2rem;
+  color: var(--cream);
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  transition: color 0.2s ease;
 }
 
 .participating-link:hover {
@@ -116,7 +173,10 @@ body {
   text-align: center;
   padding: 2rem 1rem;
   font-size: 0.9rem;
-  color: var(--cocoa);
+  color: var(--cream);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 1;
 }
 
 .back-link {
@@ -255,6 +315,10 @@ body {
 @media print {
   body {
     background: none;
+  }
+
+  body::before {
+    display: none;
   }
 
   .card, .house {
