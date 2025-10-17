@@ -23,7 +23,8 @@
   </main>
 
   <script type="module">
-    import { parse } from 'https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js';
+    import Papa from 'https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js';
+    const parse = Papa.parse;
 
     fetch('/data/participants.csv')
       .then(r => {
