@@ -33,20 +33,42 @@
     import { parse } from 'https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js';
 
     fetch('data/participants.csv')
-      .then(r => r.text())
-      .then(t => parse(t, { header: true }).data)
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}: ${r.statusText}`);
+        return r.text();
+      })
+      .then(t => {
+        const parsed = parse(t, { header: true });
+        if (parsed.errors.length > 0) {
+          console.warn('CSV parse warnings:', parsed.errors);
+        }
+        return parsed.data;
+      })
       .then(rows => {
         const list = document.querySelector('#houses');
+        
+        // Debug: log raw data
+        console.log('Total rows:', rows.length);
+        console.log('First row keys:', rows[0] ? Object.keys(rows[0]) : 'no rows');
+        console.log('Sample row:', rows[0]);
 
         // Filter and sort houses with theme names
+        const themeColumnName = 'Would you like to give your house a fun "Trick-or-Treat Name" for the map?';
         const houses = rows
-          .filter(r => r['Would you like to give your house a fun "Trick-or-Treat Name" for the map?']?.trim())
+          .filter(r => r[themeColumnName]?.trim())
           .map(r => ({
-            name: r['Would you like to give your house a fun "Trick-or-Treat Name" for the map?'].trim(),
-            address: r['Address ']?.trim() || '',
+            name: r[themeColumnName].trim(),
+            address: r['Address ']?.trim() || r['Address']?.trim() || '',
             household: r['Household Name']?.trim() || ''
           }))
           .sort((a, b) => a.name.localeCompare(b.name));
+
+        console.log('Filtered houses:', houses.length, houses);
+
+        if (houses.length === 0) {
+          list.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--cream);">No participating houses found. Check the CSV data.</p>';
+          return;
+        }
 
         houses.forEach(house => {
           const blurb = `A ${house.name} stop with festive lights and friendly frights — don't miss the treats!`;
@@ -60,7 +82,7 @@
       })
       .catch(error => {
         console.error('Error loading participating houses:', error);
-        document.querySelector('#houses').innerHTML = '<p>Sorry, unable to load the list of participating houses at this time.</p>';
+        document.querySelector('#houses').innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--cream);">Sorry, unable to load the list of participating houses at this time. Error: ' + error.message + '</p>';
       });
   </script>
     <a href="index.html" class="home-fab" title="Back to home">🏠</a>
