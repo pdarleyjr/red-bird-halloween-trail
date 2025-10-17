@@ -52,16 +52,17 @@
         console.log('Sample row:', rows[0]);
 
         // Filter and sort houses with theme names
-        const themeColumnName = 'Would you like to give your house a fun "Trick-or-Treat Name" for the map?';
+        // Find the theme column dynamically (handles different quote styles in CSV)
+        const themeColumnName = Object.keys(rows[0] || {}).find(key => 
+          key.includes('Trick-or-Treat Name') || key.includes('Trick-or-Treat Name')
+        );
         
-        // Debug: check first row's theme value
-        console.log('First row theme value:', rows[0] ? rows[0][themeColumnName] : 'no first row');
-        console.log('First row theme type:', rows[0] ? typeof rows[0][themeColumnName] : 'N/A');
-        console.log('First row theme length:', rows[0] && rows[0][themeColumnName] ? rows[0][themeColumnName].length : 'N/A');
+        console.log('Found theme column:', themeColumnName);
+        console.log('First row theme value:', rows[0] && themeColumnName ? rows[0][themeColumnName] : 'not found');
         
         const houses = rows
           .filter(r => {
-            if (!r) return false;
+            if (!r || !themeColumnName) return false;
             const themeVal = r[themeColumnName];
             const hasTheme = themeVal && typeof themeVal === 'string' && themeVal.trim().length > 0;
             return hasTheme;
