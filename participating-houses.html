@@ -53,8 +53,19 @@
 
         // Filter and sort houses with theme names
         const themeColumnName = 'Would you like to give your house a fun "Trick-or-Treat Name" for the map?';
+        
+        // Debug: check first row's theme value
+        console.log('First row theme value:', rows[0] ? rows[0][themeColumnName] : 'no first row');
+        console.log('First row theme type:', rows[0] ? typeof rows[0][themeColumnName] : 'N/A');
+        console.log('First row theme length:', rows[0] && rows[0][themeColumnName] ? rows[0][themeColumnName].length : 'N/A');
+        
         const houses = rows
-          .filter(r => r && r[themeColumnName] && r[themeColumnName].trim().length > 0)
+          .filter(r => {
+            if (!r) return false;
+            const themeVal = r[themeColumnName];
+            const hasTheme = themeVal && typeof themeVal === 'string' && themeVal.trim().length > 0;
+            return hasTheme;
+          })
           .map(r => ({
             name: r[themeColumnName].trim(),
             address: (r['Address '] || r['Address'] || '').trim(),
