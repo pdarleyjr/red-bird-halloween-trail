@@ -9,6 +9,7 @@
 </head>
 <body class="bg-how-it-works">
   <div class="scrim">
+    <button class="scrim-toggle" id="scrimToggle" aria-pressed="false" aria-label="Toggle background dim">Show background</button>
     <main class="container">
       <a href="/" class="back-link">← Back to Home</a>
 
@@ -47,6 +48,19 @@
       </div>
     </main>
   </div>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('scrimToggle');
+      var scrim = document.querySelector('.scrim');
+      if(!btn || !scrim) return;
+      btn.addEventListener('click', function(){
+        var isOff = scrim.classList.toggle('scrim--off');
+        btn.setAttribute('aria-pressed', isOff ? 'true' : 'false');
+        btn.textContent = isOff ? 'Hide background' : 'Show background';
+      });
+    })();
+  </script>
 </body>
 </html></instructions>
 </edit_file>

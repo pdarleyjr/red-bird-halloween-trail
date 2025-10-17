@@ -16,6 +16,7 @@
 </head>
 <body class="bg-how-it-works">
   <a class="skip-link" href="#main-content">Skip to content</a>
+  <button class="scrim-toggle" id="scrimToggle" aria-pressed="false" aria-label="Toggle background dim">Show background</button>
   <div class="scrim">
     <main class="container" id="main-content">
       <a href="index.html" class="back-link">← Back to Home</a>
@@ -57,5 +58,18 @@
   </div>
 
   <a href="index.html" class="home-fab" title="Back to home">🏠</a>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('scrimToggle');
+      var scrim = document.querySelector('.scrim');
+      if(!btn || !scrim) return;
+      btn.addEventListener('click', function(){
+        var isOff = scrim.classList.toggle('scrim--off');
+        btn.setAttribute('aria-pressed', isOff ? 'true' : 'false');
+        btn.textContent = isOff ? 'Hide background' : 'Show background';
+      });
+    })();
+  </script>
 </body>
 </html>

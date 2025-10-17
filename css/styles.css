@@ -68,8 +68,10 @@ body:not(.home-page) {
 }
 
 /* How It Works page background */
-.bg-how-it-works {
-  background-image: url('../assets/bg/howitworks_bg_image.png');
+.bg-how-it-works,
+body.bg-how-it-works {
+  /* use full background shorthand and higher specificity so this wins over the general page gradient */
+  background: url('../assets/bg/howitworks_bg_image.png') center/cover no-repeat fixed !important;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -96,6 +98,29 @@ body:not(.home-page) {
   backdrop-filter: saturate(120%) blur(1px);
   min-height: 100vh;
 }
+
+/* Toggle states to reveal/hide the scrim quickly for testing or preference */
+.scrim--off {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Scrim toggle button */
+.scrim-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  padding: 0.45rem 0.6rem;
+  background: rgba(30,30,30,0.7);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+.scrim-toggle:focus { outline: 3px solid rgba(217,124,30,0.6); }
 
 .container {
   max-width: 1200px;
