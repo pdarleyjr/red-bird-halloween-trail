@@ -54,11 +54,11 @@
         // Filter and sort houses with theme names
         const themeColumnName = 'Would you like to give your house a fun "Trick-or-Treat Name" for the map?';
         const houses = rows
-          .filter(r => r[themeColumnName]?.trim())
+          .filter(r => r && r[themeColumnName] && r[themeColumnName].trim().length > 0)
           .map(r => ({
             name: r[themeColumnName].trim(),
-            address: r['Address ']?.trim() || r['Address']?.trim() || '',
-            household: r['Household Name']?.trim() || ''
+            address: (r['Address '] || r['Address'] || '').trim(),
+            household: (r['Household Name'] || '').trim()
           }))
           .sort((a, b) => a.name.localeCompare(b.name));
 
