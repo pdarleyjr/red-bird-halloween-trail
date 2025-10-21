@@ -179,7 +179,7 @@ a:hover {
    ============================================ */
 @media (max-width: 899.98px) {
   .hero-btn-about {
-    left: 9.5%;
+    left: 6%;
     bottom: 16.5%;
     width: 20%;
     height: 4.5%;
@@ -188,7 +188,7 @@ a:hover {
   }
   
   .hero-btn-map {
-    left: 40%;
+    left: 35%;
     bottom: 16.5%;
     width: 20%;
     height: 4.5%;
@@ -197,7 +197,7 @@ a:hover {
   }
   
   .hero-btn-flyer {
-    left: 70.5%;
+    left: 64%;
     bottom: 16.5%;
     width: 20%;
     height: 4.5%;
@@ -215,7 +215,7 @@ a:hover {
    ============================================ */
 @media (min-width: 900px) {
   .hero-btn-about {
-    left: 27.5%;
+    left: 24%;
     bottom: 22%;
     width: 11%;
     height: 4.5%;
@@ -224,7 +224,7 @@ a:hover {
   }
   
   .hero-btn-map {
-    left: 44.5%;
+    left: 40.5%;
     bottom: 22%;
     width: 11%;
     height: 4.5%;
@@ -233,7 +233,7 @@ a:hover {
   }
   
   .hero-btn-flyer {
-    left: 61.5%;
+    left: 57%;
     bottom: 22%;
     width: 11%;
     height: 4.5%;
