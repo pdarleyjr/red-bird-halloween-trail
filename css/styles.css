@@ -295,13 +295,9 @@ a:hover {
 /* Participating Houses Link with Icon - Mobile First */
 .participating-houses-link-wrapper {
   position: fixed;
-  bottom: 35%;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 30%;
+  right: 8%;
   z-index: 20;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   pointer-events: none;
 }
 
