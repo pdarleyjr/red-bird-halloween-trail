@@ -80,8 +80,9 @@ a:hover {
 .hero-stage {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0; /* Background layer, but allows hotspots to be clickable */
   display: grid;
+  pointer-events: none; /* Stage itself doesn't block clicks */
 }
 
 /* The media box is the ratio lock; it expands to cover the viewport */
@@ -101,7 +102,7 @@ a:hover {
 .hero-hotspots {
   position: absolute;
   inset: 0;
-  z-index: 10; /* above image */
+  z-index: 100; /* above image and all page content */
   pointer-events: none; /* container ignores; children accept */
 }
 
