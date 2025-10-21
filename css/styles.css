@@ -96,7 +96,7 @@ a:hover {
   inset: 0;
   /* wrapper is non-interactive, but children with pointer-events:auto ARE clickable */
   pointer-events: none;
-  z-index: 40; /* above hero image, below floating UI */
+  z-index: 9998; /* Very high to ensure hotspots are above everything except floating UI */
 }
 
 .hotspot {
@@ -106,8 +106,9 @@ a:hover {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 8px;
-  /* Debug outline - remove in production */
-  /* outline: 2px solid rgba(255,0,0,0.3); */
+  /* Debug outline - ENABLED FOR TESTING */
+  outline: 2px solid rgba(255,0,0,0.5);
+  background: rgba(255,255,0,0.2); /* yellow semi-transparent background for visibility */
 }
 
 .hotspot:hover::before {
@@ -192,7 +193,11 @@ a:hover {
   justify-content: center;
   gap: 0.5rem;
   position: relative;
-  z-index: 1;
+  pointer-events: none; /* Don't block hotspots */
+}
+
+.container > * {
+  pointer-events: auto; /* But allow clicks on actual content */
 }
 
 @media (min-width: 768px) {
