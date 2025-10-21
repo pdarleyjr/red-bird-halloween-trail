@@ -317,7 +317,7 @@ a:hover {
 /* Participating Houses Link with Icon - Mobile First */
 .participating-houses-link-wrapper {
   position: fixed;
-  bottom: 30%;
+  bottom: 18%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
@@ -385,7 +385,7 @@ a:hover {
 
 @media (min-width: 900px) {
   .participating-houses-link-wrapper {
-    bottom: 36%;
+    bottom: 20%;
   }
   
   .haunted-house-icon {
