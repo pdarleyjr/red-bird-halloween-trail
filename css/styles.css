@@ -113,10 +113,12 @@ a:hover {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   text-decoration: none;
   outline: none;
-  background: rgba(248, 107, 10, 0.85);
-  border: 2px solid var(--rb-ember);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 0 8px rgba(248, 107, 10, 0.4);
+  border: 2px solid;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
 .hero-btn:focus {
@@ -124,25 +126,52 @@ a:hover {
   outline-offset: 2px;
 }
 
+/* About Button - Teal */
+.hero-btn-about {
+  background: rgba(3, 142, 167, 0.9);
+  border-color: var(--rb-teal);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 0 12px rgba(3, 142, 167, 0.5);
+}
+
+.hero-btn-about:hover {
+  background: rgba(3, 142, 167, 1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7), 0 0 20px rgba(3, 142, 167, 0.8);
+  transform: scale(1.05);
+}
+
+/* Map Button - Mint/Cyan */
+.hero-btn-map {
+  background: rgba(20, 201, 195, 0.9);
+  border-color: var(--rb-mint);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 0 12px rgba(20, 201, 195, 0.5);
+}
+
+.hero-btn-map:hover {
+  background: rgba(20, 201, 195, 1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7), 0 0 20px rgba(20, 201, 195, 0.8);
+  transform: scale(1.05);
+}
+
+/* Flyer Button - Orange/Ember */
+.hero-btn-flyer {
+  background: rgba(248, 107, 10, 0.9);
+  border-color: var(--rb-ember);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 0 12px rgba(248, 107, 10, 0.5);
+}
+
+.hero-btn-flyer:hover {
+  background: rgba(248, 107, 10, 1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7), 0 0 20px rgba(248, 107, 10, 0.8);
+  transform: scale(1.05);
+}
+
 .btn-text {
   display: block;
   color: var(--rb-cream);
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.8);
   transition: all 0.3s ease;
-}
-
-.hero-btn:hover {
-  background: rgba(236, 94, 33, 0.95);
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7), 0 0 16px rgba(248, 107, 10, 0.6);
-}
-
-.hero-btn:hover .btn-text {
-  color: var(--rb-cream);
-  text-shadow: 0 0 8px var(--rb-ember), 0 2px 6px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
 }
 
 /* ============================================
@@ -150,34 +179,34 @@ a:hover {
    ============================================ */
 @media (max-width: 899.98px) {
   .hero-btn-about {
-    left: 10%;
-    bottom: 30%;
-    width: 22%;
-    height: 7%;
-    min-width: 60px;
+    left: 8%;
+    bottom: 32%;
+    width: 24%;
+    height: 6%;
+    min-width: 70px;
     min-height: 44px;
   }
   
   .hero-btn-map {
-    left: 39%;
-    bottom: 30%;
-    width: 22%;
-    height: 7%;
-    min-width: 60px;
+    left: 38%;
+    bottom: 32%;
+    width: 24%;
+    height: 6%;
+    min-width: 70px;
     min-height: 44px;
   }
   
   .hero-btn-flyer {
     left: 68%;
-    bottom: 30%;
-    width: 22%;
-    height: 7%;
-    min-width: 60px;
+    bottom: 32%;
+    width: 24%;
+    height: 6%;
+    min-width: 70px;
     min-height: 44px;
   }
   
   .btn-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }
 
@@ -186,34 +215,34 @@ a:hover {
    ============================================ */
 @media (min-width: 900px) {
   .hero-btn-about {
-    left: 27%;
-    bottom: 33%;
-    width: 16%;
-    height: 7%;
+    left: 26%;
+    bottom: 34%;
+    width: 13%;
+    height: 6%;
     min-width: 80px;
     min-height: 44px;
   }
   
   .hero-btn-map {
-    left: 42%;
-    bottom: 33%;
-    width: 16%;
-    height: 7%;
+    left: 43.5%;
+    bottom: 34%;
+    width: 13%;
+    height: 6%;
     min-width: 80px;
     min-height: 44px;
   }
   
   .hero-btn-flyer {
-    left: 57%;
-    bottom: 33%;
-    width: 16%;
-    height: 7%;
+    left: 61%;
+    bottom: 34%;
+    width: 13%;
+    height: 6%;
     min-width: 80px;
     min-height: 44px;
   }
   
   .btn-text {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
 }
 
