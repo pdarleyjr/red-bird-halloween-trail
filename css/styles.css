@@ -107,49 +107,49 @@ a:hover {
   /* outline: 2px solid rgba(255,0,0,0.3); */
 }
 
-/* Mobile hotspot positioning - adjust to match button locations in mobile background */
+/* Mobile hotspot positioning - adjusted to match actual button locations */
 .hotspot.about {
-  left: 8%;
-  right: 68%;
-  bottom: 18%;
-  height: 52px;
+  left: 28%;
+  width: 14%;
+  bottom: 44%;
+  height: 44px;
 }
 
 .hotspot.map {
-  left: 39%;
-  right: 39%;
-  bottom: 18%;
-  height: 52px;
+  left: 46%;
+  width: 12%;
+  bottom: 44%;
+  height: 44px;
 }
 
 .hotspot.flyer {
-  left: 68%;
-  right: 8%;
-  bottom: 18%;
-  height: 52px;
+  left: 62%;
+  width: 14%;
+  bottom: 44%;
+  height: 44px;
 }
 
-/* Desktop hotspot positioning - adjust to match button locations in desktop background */
+/* Desktop hotspot positioning - adjusted to match actual button locations */
 @media (min-width: 900px) {
   .hotspot.about {
-    left: 18%;
-    right: 62%;
-    bottom: 16%;
-    height: 60px;
+    left: 29%;
+    width: 13%;
+    bottom: 43%;
+    height: 48px;
   }
   
   .hotspot.map {
-    left: 41%;
-    right: 41%;
-    bottom: 16%;
-    height: 60px;
+    left: 46%;
+    width: 11%;
+    bottom: 43%;
+    height: 48px;
   }
   
   .hotspot.flyer {
-    left: 62%;
-    right: 18%;
-    bottom: 16%;
-    height: 60px;
+    left: 61%;
+    width: 13%;
+    bottom: 43%;
+    height: 48px;
   }
 }
 
