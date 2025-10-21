@@ -74,127 +74,114 @@ a:hover {
 }
 
 /* ============================================
-   HERO STAGE - Ratio-locked positioning system
+   HERO BACKGROUND COMPONENT - Mobile First
    ============================================ */
-/* Stage fills the viewport but preserves the art's aspect ratio */
-.hero-stage {
+.hero-wrap {
   position: fixed;
   inset: 0;
-  z-index: 0; /* Background layer, but allows hotspots to be clickable */
-  display: grid;
+  z-index: -1;
+  overflow: hidden;
 }
 
-/* The media box is the ratio lock; it expands to cover the viewport */
-.hero-media {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.hero-media,
-.hero-media > img {
+.hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-}
-
-/* Hotspot layer sits above the media; positions are % of this box */
-.hero-hotspots {
-  position: absolute;
-  inset: 0;
-  z-index: 100; /* above image and all page content */
-  pointer-events: none; /* container ignores; children accept */
-}
-
-.hero-hotspots .hs {
-  position: absolute;
-  pointer-events: auto; /* clickable elements */
-  display: block;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-  /* Debug outline - ENABLED to verify hotspots exist */
-  outline: 3px solid lime;
-  background: rgba(0,255,0,0.15);
-}
-
-/* Hover effect for hotspots */
-.hero-hotspots .hs:hover::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 12px;
-  background: radial-gradient(circle, rgba(248, 107, 10, 0.4) 0%, rgba(236, 94, 33, 0.2) 50%, transparent 70%);
-  filter: blur(8px);
-  z-index: -1;
-  animation: pulse-glow 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
+  object-position: center;
 }
 
 /* ============================================
-   DESKTOP HOTSPOT MAPPING (≥900px)
-   Corrected positions - lowered by ~22% to align with buttons
+   HERO BUTTONS - SVG Navigation
    ============================================ */
-@media (min-width: 900px) {
-  .hero-hotspots .hs-about {
-    left: 28.3%; /* Shifted left by ~2% */
-    width: 12.8%;
-    bottom: 21.5%; /* Lowered from ~43% to align with visual buttons */
-    height: 7.0%;
-  }
-  
-  .hero-hotspots .hs-map {
-    left: 43.9%; /* Shifted left by ~2% */
-    width: 12.8%;
-    bottom: 21.5%; /* Lowered from ~43% to align with visual buttons */
-    height: 7.0%;
-  }
-  
-  .hero-hotspots .hs-flyer {
-    left: 59.4%; /* Shifted left by ~2% */
-    width: 12.8%;
-    bottom: 21.5%; /* Lowered from ~43% to align with visual buttons */
-    height: 7.0%;
-  }
+.hero-buttons {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-btn {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+  outline: none;
+}
+
+.hero-btn:focus {
+  outline: 3px solid var(--rb-mint);
+  outline-offset: 2px;
+}
+
+.hero-btn img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover img {
+  filter: drop-shadow(0 0 12px rgba(248, 107, 10, 0.8)) drop-shadow(0 0 6px var(--rb-ember));
+  transform: scale(1.08);
 }
 
 /* ============================================
-   MOBILE HOTSPOT MAPPING (<900px)
-   Mobile art stacks differently
+   MOBILE BUTTON POSITIONING (<900px)
    ============================================ */
 @media (max-width: 899.98px) {
-  .hero-hotspots .hs-about {
-    left: 16.0%; /* Shifted left by ~2% */
-    width: 22.0%;
-    bottom: 13.0%; /* Lowered from ~35% to align with visual buttons */
-    height: 6.5%;
+  .hero-btn-about {
+    left: 12%;
+    bottom: 28%;
+    width: 20%;
+    height: 8%;
   }
   
-  .hero-hotspots .hs-map {
-    left: 37.0%; /* Shifted left by ~2% */
-    width: 22.0%;
-    bottom: 13.0%; /* Lowered from ~35% to align with visual buttons */
-    height: 6.5%;
+  .hero-btn-map {
+    left: 40%;
+    bottom: 28%;
+    width: 20%;
+    height: 8%;
   }
   
-  .hero-hotspots .hs-flyer {
-    left: 58.0%; /* Shifted left by ~2% */
-    width: 22.0%;
-    bottom: 13.0%; /* Lowered from ~35% to align with visual buttons */
-    height: 6.5%;
+  .hero-btn-flyer {
+    left: 68%;
+    bottom: 28%;
+    width: 20%;
+    height: 8%;
+  }
+}
+
+/* ============================================
+   DESKTOP BUTTON POSITIONING (≥900px)
+   ============================================ */
+@media (min-width: 900px) {
+  .hero-btn-about {
+    left: 28%;
+    bottom: 32%;
+    width: 14%;
+    height: 8%;
+  }
+  
+  .hero-btn-map {
+    left: 43%;
+    bottom: 32%;
+    width: 14%;
+    height: 8%;
+  }
+  
+  .hero-btn-flyer {
+    left: 58%;
+    bottom: 32%;
+    width: 14%;
+    height: 8%;
   }
 }
 

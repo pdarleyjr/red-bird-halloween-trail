@@ -23,20 +23,26 @@
 <body class="home-page">
   <a class="skip-link" href="#main-content">Skip to content</a>
   
-  <!-- Positioning stage that the hotspots will be relative to -->
-  <section class="hero-stage" aria-hidden="true">
-    <picture class="hero-media">
+  <!-- Hero Background with SVG Buttons -->
+  <div class="hero-wrap" aria-hidden="true">
+    <picture>
       <source media="(min-width: 900px)" srcset="assets/bg/home/with-links-desktop.png" />
-      <img src="assets/bg/home/with-links-mobile.png" alt="" />
+      <img src="assets/bg/home/with-links-mobile.png" alt="" class="hero-img">
     </picture>
+  </div>
 
-    <!-- Clickable hotspots mapped to the baked-in "buttons" -->
-    <nav class="hero-hotspots">
-      <a class="hs hs-about" href="about.html" aria-label="About the Red Bird Trick-or-Treat Trail"></a>
-      <a class="hs hs-map" href="interactive-map.html" aria-label="View interactive map"></a>
-      <a class="hs hs-flyer" href="download.html" aria-label="Download flyer"></a>
-    </nav>
-  </section>
+  <!-- SVG Button Navigation -->
+  <nav class="hero-buttons">
+    <a href="about.html" class="hero-btn hero-btn-about" aria-label="Learn about the Red Bird Trick-or-Treat Trail">
+      <img src="assets/ui/buttons/about_link.svg" alt="About" />
+    </a>
+    <a href="interactive-map.html" class="hero-btn hero-btn-map" aria-label="View the interactive map">
+      <img src="assets/ui/buttons/map_link.svg" alt="Map" />
+    </a>
+    <a href="download.html" class="hero-btn hero-btn-flyer" aria-label="Download the trail flyer">
+      <img src="assets/ui/buttons/flyer_link.svg" alt="Flyer" />
+    </a>
+  </nav>
 
   <!-- Participating Houses Link -->
   <div class="participating-houses-link-wrapper">
