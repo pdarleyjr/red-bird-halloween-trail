@@ -292,6 +292,94 @@ a:hover {
   }
 }
 
+/* Participating Houses Link with Icon - Mobile First */
+.participating-houses-link-wrapper {
+  position: fixed;
+  bottom: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.participating-houses-link {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.participating-houses-link:hover,
+.participating-houses-link:focus {
+  transform: translateY(-4px);
+  outline: none;
+}
+
+.haunted-house-icon {
+  width: 48px;
+  height: 48px;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+  transition: all 0.3s ease;
+}
+
+.participating-houses-link:hover .haunted-house-icon,
+.participating-houses-link:focus .haunted-house-icon {
+  filter: drop-shadow(0 6px 16px rgba(248, 107, 10, 0.8)) drop-shadow(0 0 12px var(--rb-ember));
+  transform: scale(1.1);
+}
+
+.participating-label {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--rb-cream);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+.participating-houses-link:hover .participating-label,
+.participating-houses-link:focus .participating-label {
+  color: var(--rb-ember);
+  text-shadow: 0 0 .5rem var(--rb-ember), 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 768px) {
+  .haunted-house-icon {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .participating-label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .participating-houses-link-wrapper {
+    bottom: 36%;
+  }
+  
+  .haunted-house-icon {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .participating-label {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+}
+
 /* Legacy button grid (fallback) */
 .btn-grid {
   display: flex;
