@@ -94,8 +94,9 @@ a:hover {
 .hero-hotspots {
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  z-index: 30;
+  /* allow clicks on child anchors */
+  pointer-events: auto;
+  z-index: 40; /* above hero image, below floating UI */
 }
 
 .hotspot {
@@ -319,11 +320,11 @@ a:hover {
 /* Participating Houses Link with Icon - Mobile First */
 .participating-houses-link-wrapper {
   position: fixed;
-  bottom: 18%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  pointer-events: none;
+  right: clamp(12px, 3vw, 28px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(12px, 2.5vh, 24px));
+  z-index: 50;
+  /* wrapper must accept events so the <a> is clickable */
+  pointer-events: auto;
 }
 
 .participating-houses-link {
@@ -343,8 +344,8 @@ a:hover {
 }
 
 .haunted-house-icon {
-  width: 48px;
-  height: 48px;
+  width: clamp(48px, 6.5vw, 64px);
+  height: clamp(48px, 6.5vw, 64px);
   display: block;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
   transition: all 0.3s ease;
@@ -360,7 +361,7 @@ a:hover {
   display: block;
   margin-top: 0.4rem;
   color: var(--rb-cream);
-  font-size: 0.75rem;
+  font-size: clamp(0.72rem, 2.2vw, 0.9rem);
   font-weight: 600;
   text-align: center;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6);
@@ -374,29 +375,13 @@ a:hover {
   text-shadow: 0 0 .5rem var(--rb-ember), 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
-@media (min-width: 768px) {
-  .haunted-house-icon {
-    width: 56px;
-    height: 56px;
-  }
-  
-  .participating-label {
-    font-size: 0.85rem;
-  }
-}
-
 @media (min-width: 900px) {
   .participating-houses-link-wrapper {
-    bottom: 20%;
-  }
-  
-  .haunted-house-icon {
-    width: 64px;
-    height: 64px;
+    /* nudge a bit higher on wide desktops so it clears any browser UI */
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
   }
   
   .participating-label {
-    font-size: 0.9rem;
     margin-top: 0.5rem;
   }
 }
