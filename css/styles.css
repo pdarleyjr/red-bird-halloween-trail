@@ -105,6 +105,8 @@ a:hover {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 8px;
+  /* Debug outline - remove in production */
+  /* outline: 2px solid rgba(255,0,0,0.3); */
 }
 
 .hotspot:hover::before {
@@ -133,21 +135,21 @@ a:hover {
 .hotspot.about {
   left: 28%;
   width: 14%;
-  bottom: 44%;
+  bottom: 35%;
   height: 44px;
 }
 
 .hotspot.map {
   left: 46%;
   width: 12%;
-  bottom: 44%;
+  bottom: 35%;
   height: 44px;
 }
 
 .hotspot.flyer {
   left: 62%;
   width: 14%;
-  bottom: 44%;
+  bottom: 35%;
   height: 44px;
 }
 
