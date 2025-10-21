@@ -11,11 +11,22 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/brand/Red_Bird_Logo.png">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#D97C1E">
+  <meta name="theme-color" content="#F86B0A">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
+  
+  <!-- Hero Background Component - Mobile First -->
+  <div class="hero-wrap" aria-hidden="true">
+    <picture>
+      <!-- Desktop/Large -->
+      <source media="(min-width: 900px)" srcset="assets/bg/map/desktop.png" />
+      <!-- Mobile (default) -->
+      <img src="assets/bg/map/mobile.png" alt="" class="hero-img">
+    </picture>
+  </div>
+
   <main class="container" id="main-content">
     <a href="index.html" class="back-link">← Back to Home</a>
 
