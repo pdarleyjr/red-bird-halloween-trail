@@ -82,7 +82,6 @@ a:hover {
   inset: 0;
   z-index: 0; /* Background layer, but allows hotspots to be clickable */
   display: grid;
-  pointer-events: none; /* Stage itself doesn't block clicks */
 }
 
 /* The media box is the ratio lock; it expands to cover the viewport */
