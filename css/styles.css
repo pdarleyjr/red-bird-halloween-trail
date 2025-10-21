@@ -150,21 +150,21 @@ a:hover {
    ============================================ */
 @media (min-width: 900px) {
   .hero-hotspots .hs-about {
-    left: 30.3%;
+    left: 28.3%; /* Shifted left by ~2% */
     width: 12.8%;
     bottom: 21.5%; /* Lowered from ~43% to align with visual buttons */
     height: 7.0%;
   }
   
   .hero-hotspots .hs-map {
-    left: 45.9%;
+    left: 43.9%; /* Shifted left by ~2% */
     width: 12.8%;
     bottom: 21.5%; /* Lowered from ~43% to align with visual buttons */
     height: 7.0%;
   }
   
   .hero-hotspots .hs-flyer {
-    left: 61.4%;
+    left: 59.4%; /* Shifted left by ~2% */
     width: 12.8%;
     bottom: 21.5%; /* Lowered from ~43% to align with visual buttons */
     height: 7.0%;
@@ -177,21 +177,21 @@ a:hover {
    ============================================ */
 @media (max-width: 899.98px) {
   .hero-hotspots .hs-about {
-    left: 18.0%;
+    left: 16.0%; /* Shifted left by ~2% */
     width: 22.0%;
     bottom: 13.0%; /* Lowered from ~35% to align with visual buttons */
     height: 6.5%;
   }
   
   .hero-hotspots .hs-map {
-    left: 39.0%;
+    left: 37.0%; /* Shifted left by ~2% */
     width: 22.0%;
     bottom: 13.0%; /* Lowered from ~35% to align with visual buttons */
     height: 6.5%;
   }
   
   .hero-hotspots .hs-flyer {
-    left: 60.0%;
+    left: 58.0%; /* Shifted left by ~2% */
     width: 22.0%;
     bottom: 13.0%; /* Lowered from ~35% to align with visual buttons */
     height: 6.5%;
