@@ -74,44 +74,51 @@ a:hover {
 }
 
 /* ============================================
-   HERO BACKGROUND COMPONENT - Mobile First
+   HERO STAGE - Ratio-locked positioning system
    ============================================ */
-.hero-wrap {
+/* Stage fills the viewport but preserves the art's aspect ratio */
+.hero-stage {
   position: fixed;
   inset: 0;
   z-index: -1;
-  overflow: hidden;
+  display: grid;
 }
 
-.hero-img {
+/* The media box is the ratio lock; it expands to cover the viewport */
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  display: block;
 }
 
-/* Hero Hotspots - Invisible clickable areas over background buttons */
+/* Hotspot layer sits above the media; positions are % of this box */
 .hero-hotspots {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  /* wrapper is non-interactive, but children with pointer-events:auto ARE clickable */
-  pointer-events: none;
-  z-index: 9998; /* Very high to ensure hotspots are above everything except floating UI */
+  z-index: 10; /* above image */
+  pointer-events: none; /* container ignores; children accept */
 }
 
-.hotspot {
+.hero-hotspots .hs {
   position: absolute;
-  pointer-events: auto;
+  pointer-events: auto; /* clickable elements */
   display: block;
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 8px;
-  /* Debug outline - ENABLED FOR TESTING */
-  outline: 2px solid rgba(255,0,0,0.5);
-  background: rgba(255,255,0,0.2); /* yellow semi-transparent background for visibility */
+  /* Debug outline - ENABLED for calibration */
+  outline: 2px dashed rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.1);
 }
 
-.hotspot:hover::before {
+/* Hover effect for hotspots */
+.hero-hotspots .hs:hover::before {
   content: '';
   position: absolute;
   inset: -4px;
@@ -133,49 +140,57 @@ a:hover {
   }
 }
 
-/* Mobile hotspot positioning - adjusted to match actual button locations */
-.hotspot.about {
-  left: 28%;
-  width: 14%;
-  bottom: 35%;
-  height: 44px;
-}
-
-.hotspot.map {
-  left: 46%;
-  width: 12%;
-  bottom: 35%;
-  height: 44px;
-}
-
-.hotspot.flyer {
-  left: 62%;
-  width: 14%;
-  bottom: 35%;
-  height: 44px;
-}
-
-/* Desktop hotspot positioning - adjusted to match actual button locations */
+/* ============================================
+   DESKTOP HOTSPOT MAPPING (≥900px)
+   Corrected positions - lowered by ~22% to align with buttons
+   ============================================ */
 @media (min-width: 900px) {
-  .hotspot.about {
-    left: 29%;
-    width: 13%;
-    bottom: 43%;
-    height: 48px;
+  .hero-hotspots .hs-about {
+    left: 30.3%;
+    width: 12.8%;
+    bottom: 21.5%; /* Lowered from ~43% to align with visual buttons */
+    height: 7.0%;
   }
   
-  .hotspot.map {
-    left: 46%;
-    width: 11%;
-    bottom: 43%;
-    height: 48px;
+  .hero-hotspots .hs-map {
+    left: 45.9%;
+    width: 12.8%;
+    bottom: 21.5%; /* Lowered from ~43% to align with visual buttons */
+    height: 7.0%;
   }
   
-  .hotspot.flyer {
-    left: 61%;
-    width: 13%;
-    bottom: 43%;
-    height: 48px;
+  .hero-hotspots .hs-flyer {
+    left: 61.4%;
+    width: 12.8%;
+    bottom: 21.5%; /* Lowered from ~43% to align with visual buttons */
+    height: 7.0%;
+  }
+}
+
+/* ============================================
+   MOBILE HOTSPOT MAPPING (<900px)
+   Mobile art stacks differently
+   ============================================ */
+@media (max-width: 899.98px) {
+  .hero-hotspots .hs-about {
+    left: 18.0%;
+    width: 22.0%;
+    bottom: 13.0%; /* Lowered from ~35% to align with visual buttons */
+    height: 6.5%;
+  }
+  
+  .hero-hotspots .hs-map {
+    left: 39.0%;
+    width: 22.0%;
+    bottom: 13.0%; /* Lowered from ~35% to align with visual buttons */
+    height: 6.5%;
+  }
+  
+  .hero-hotspots .hs-flyer {
+    left: 60.0%;
+    width: 22.0%;
+    bottom: 13.0%; /* Lowered from ~35% to align with visual buttons */
+    height: 6.5%;
   }
 }
 
