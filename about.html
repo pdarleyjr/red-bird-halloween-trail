@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About - Red Bird Trick-or-Treat Trail</title>
+  <meta name="description" content="Learn how the Red Bird neighborhood trick-or-treat trail works with family-friendly guidelines and safety tips.">
+  <meta property="og:title" content="About - Red Bird Trick-or-Treat Trail">
+  <meta property="og:description" content="Learn how the Red Bird neighborhood trick-or-treat trail works with family-friendly guidelines and safety tips.">
+  <meta property="og:image" content="assets/flyer/flyer.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/brand/Red_Bird_Logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#F86B0A">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  
+  <!-- Hero Background Component - Mobile First -->
+  <div class="hero-wrap" aria-hidden="true">
+    <picture>
+      <!-- Desktop/Large -->
+      <source media="(min-width: 900px)" srcset="assets/bg/about/desktop.png" />
+      <!-- Mobile (default) -->
+      <img src="assets/bg/about/mobile.png" alt="" class="hero-img">
+    </picture>
+  </div>
+
+  <button class="scrim-toggle" id="scrimToggle" aria-pressed="false" aria-label="Toggle background dim">Show background</button>
+  <div class="scrim">
+    <main class="container" id="main-content">
+      <a href="index.html" class="back-link">← Back to Home</a>
+
+      <h1>About the Trail</h1>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>🎃 Family-Friendly</h3>
+          <p>Our trail is designed for all ages with gentle scares and generous treats. Perfect for young children and families exploring together.</p>
+        </article>
+
+        <article class="card">
+          <h3>🛡️ Safety First</h3>
+          <p>Walk during daylight hours and stay on designated paths. Parents accompany young children, and everyone respects personal space.</p>
+        </article>
+
+        <article class="card">
+          <h3>🚗 Carpool When Possible</h3>
+          <p>Park at designated areas and walk between houses. This reduces traffic and makes the experience more enjoyable for everyone.</p>
+        </article>
+
+        <article class="card">
+          <h3>🤝 Be Kind & Tidy</h3>
+          <p>Respect our neighbors' property and keep the trail clean. Say thank you and enjoy the festive atmosphere with good spirits.</p>
+        </article>
+
+        <article class="card">
+          <h3>🗺️ Follow the Icons</h3>
+          <p>Look for our trail markers and house signs. The interactive map shows all participating locations with their unique themes.</p>
+        </article>
+
+        <article class="card">
+          <h3>📸 Share the Fun</h3>
+          <p>Take photos of your favorite decorations and share them with #RedBirdTrail. Help spread the Halloween spirit in our community!</p>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <a href="index.html" class="home-fab" title="Back to home">🏠</a>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('scrimToggle');
+      var scrim = document.querySelector('.scrim');
+      if(!btn || !scrim) return;
+      btn.addEventListener('click', function(){
+        var isOff = scrim.classList.toggle('scrim--off');
+        btn.setAttribute('aria-pressed', isOff ? 'true' : 'false');
+        btn.textContent = isOff ? 'Hide background' : 'Show background';
+      });
+    })();
+  </script>
+</body>
+</html>

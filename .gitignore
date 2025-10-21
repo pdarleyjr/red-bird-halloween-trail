@@ -1,6 +1,22 @@
+# Dependencies
 node_modules/
 package-lock.json
-package.json
+
+# Logs
 *.log
+npm-debug.log*
+
+# OS files
 .DS_Store
 Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Source CSV with PII (keep the sanitized one in data/)
+Red_Bird_Trick-or-Treat_Trail_*.csv
+
+# Temporary files
+*.tmp
+*.temp

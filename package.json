@@ -1,0 +1,32 @@
+{
+  "name": "halloween-website",
+  "version": "1.0.0",
+  "description": "Red Bird Halloween Trail Website",
+  "type": "module",
+  "scripts": {
+    "ingest-csv": "node scripts/ingest-participants.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdarleyjr/red-bird-halloween-trail.git"
+  },
+  "keywords": [
+    "halloween",
+    "trail",
+    "community"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pdarleyjr/red-bird-halloween-trail/issues"
+  },
+  "homepage": "https://github.com/pdarleyjr/red-bird-halloween-trail#readme",
+  "dependencies": {
+    "detect-libc": "^2.1.2",
+    "semver": "^7.7.3"
+  },
+  "devDependencies": {
+    "papaparse": "^5.5.3",
+    "sharp": "^0.34.4"
+  }
+}
