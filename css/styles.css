@@ -112,9 +112,9 @@ a:hover {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 8px;
-  /* Debug outline - ENABLED for calibration */
-  outline: 2px dashed rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.1);
+  /* Debug outline - disabled in production */
+  /* outline: 2px dashed rgba(255,255,255,0.6); */
+  /* background: rgba(255,255,255,0.1); */
 }
 
 /* Hover effect for hotspots */
