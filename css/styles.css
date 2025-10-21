@@ -94,8 +94,8 @@ a:hover {
 .hero-hotspots {
   position: fixed;
   inset: 0;
-  /* allow clicks on child anchors */
-  pointer-events: auto;
+  /* wrapper is non-interactive, but children with pointer-events:auto ARE clickable */
+  pointer-events: none;
   z-index: 40; /* above hero image, below floating UI */
 }
 
