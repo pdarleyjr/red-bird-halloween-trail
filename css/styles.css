@@ -90,6 +90,69 @@ a:hover {
   object-position: center;
 }
 
+/* Hero Hotspots - Invisible clickable areas over background buttons */
+.hero-hotspots {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hotspot {
+  position: absolute;
+  pointer-events: auto;
+  display: block;
+  cursor: pointer;
+  /* Debug outline - remove in production */
+  /* outline: 2px solid rgba(255,0,0,0.3); */
+}
+
+/* Mobile hotspot positioning - adjust to match button locations in mobile background */
+.hotspot.about {
+  left: 8%;
+  right: 68%;
+  bottom: 18%;
+  height: 52px;
+}
+
+.hotspot.map {
+  left: 39%;
+  right: 39%;
+  bottom: 18%;
+  height: 52px;
+}
+
+.hotspot.flyer {
+  left: 68%;
+  right: 8%;
+  bottom: 18%;
+  height: 52px;
+}
+
+/* Desktop hotspot positioning - adjust to match button locations in desktop background */
+@media (min-width: 900px) {
+  .hotspot.about {
+    left: 18%;
+    right: 62%;
+    bottom: 16%;
+    height: 60px;
+  }
+  
+  .hotspot.map {
+    left: 41%;
+    right: 41%;
+    bottom: 16%;
+    height: 60px;
+  }
+  
+  .hotspot.flyer {
+    left: 62%;
+    right: 18%;
+    bottom: 16%;
+    height: 60px;
+  }
+}
+
 /* ============================================
    CONTAINER - Mobile First
    ============================================ */
