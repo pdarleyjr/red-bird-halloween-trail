@@ -103,8 +103,30 @@ a:hover {
   pointer-events: auto;
   display: block;
   cursor: pointer;
-  /* Debug outline - remove in production */
-  /* outline: 2px solid rgba(255,0,0,0.3); */
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.hotspot:hover::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 12px;
+  background: radial-gradient(circle, rgba(248, 107, 10, 0.4) 0%, rgba(236, 94, 33, 0.2) 50%, transparent 70%);
+  filter: blur(8px);
+  z-index: -1;
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
 }
 
 /* Mobile hotspot positioning - adjusted to match actual button locations */
@@ -296,7 +318,8 @@ a:hover {
 .participating-houses-link-wrapper {
   position: fixed;
   bottom: 30%;
-  right: 8%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 20;
   pointer-events: none;
 }
