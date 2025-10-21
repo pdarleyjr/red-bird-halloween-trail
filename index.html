@@ -23,22 +23,20 @@
 <body class="home-page">
   <a class="skip-link" href="#main-content">Skip to content</a>
   
-  <!-- Hero Background Component with Buttons Baked In -->
-  <div class="hero-wrap" aria-hidden="true">
-    <picture>
-      <!-- Desktop/Large - background WITH buttons -->
+  <!-- Positioning stage that the hotspots will be relative to -->
+  <section class="hero-stage" aria-hidden="true">
+    <picture class="hero-media">
       <source media="(min-width: 900px)" srcset="assets/bg/home/with-links-desktop.png" />
-      <!-- Mobile - background WITH buttons (default) -->
-      <img src="assets/bg/home/with-links-mobile.png" alt="" class="hero-img">
+      <img src="assets/bg/home/with-links-mobile.png" alt="" />
     </picture>
-  </div>
 
-  <!-- Invisible Clickable Hotspots Over Background Buttons -->
-  <div class="hero-hotspots">
-    <a href="about.html" aria-label="Learn about the Red Bird Trick-or-Treat Trail" class="hotspot about"></a>
-    <a href="interactive-map.html" aria-label="View the interactive map of participating houses" class="hotspot map"></a>
-    <a href="download.html" aria-label="Download the trail flyer and map" class="hotspot flyer"></a>
-  </div>
+    <!-- Clickable hotspots mapped to the baked-in "buttons" -->
+    <nav class="hero-hotspots">
+      <a class="hs hs-about" href="about.html" aria-label="About the Red Bird Trick-or-Treat Trail"></a>
+      <a class="hs hs-map" href="interactive-map.html" aria-label="View interactive map"></a>
+      <a class="hs hs-flyer" href="download.html" aria-label="Download flyer"></a>
+    </nav>
+  </section>
 
   <!-- Participating Houses Link -->
   <div class="participating-houses-link-wrapper">
