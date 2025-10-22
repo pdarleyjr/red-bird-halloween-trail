@@ -3,31 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Download Map & Flyer - Red Bird Trick-or-Treat Trail</title>
-  <meta name="description" content="Download the official Red Bird neighborhood trick-or-treat trail flyer and map for Halloween.">
-  <meta property="og:title" content="Download Map & Flyer - Red Bird Trick-or-Treat Trail">
-  <meta property="og:description" content="Download the official Red Bird neighborhood trick-or-treat trail flyer and map for Halloween.">
-  <meta property="og:image" content="assets/flyer/flyer.png">
+  <title>Event Flyer - Red Bird Trick-or-Treat Trail</title>
+  <meta name="description" content="Download and print the official Red Bird neighborhood trick-or-treat trail flyer for Halloween.">
+  <meta property="og:title" content="Event Flyer - Red Bird Trick-or-Treat Trail">
+  <meta property="og:description" content="Download and print the official Red Bird neighborhood trick-or-treat trail flyer for Halloween.">
+  <meta property="og:image" content="assets/flyer/halloween_event_flyer.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/brand/Red_Bird_Logo.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#F86B0A">
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: #090937;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+    
+    .flyer-container {
+      width: 100%;
+      max-width: 850px;
+      background: white;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .flyer-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .controls {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 100;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      background: #F86B0A;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(248, 107, 10, 0.4);
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .btn:hover {
+      background: #EC5E21;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(248, 107, 10, 0.6);
+    }
+    
+    .btn-secondary {
+      background: #038EA7;
+      box-shadow: 0 4px 12px rgba(3, 142, 167, 0.4);
+    }
+    
+    .btn-secondary:hover {
+      background: #026d82;
+      box-shadow: 0 6px 16px rgba(3, 142, 167, 0.6);
+    }
+    
+    @media (max-width: 600px) {
+      .controls {
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      
+      .controls {
+        display: none !important;
+      }
+      
+      .flyer-container {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        page-break-inside: avoid;
+      }
+      
+      .flyer-image {
+        width: 100%;
+        height: auto;
+      }
+      
+      @page {
+        margin: 0;
+        size: letter portrait;
+      }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <main class="container" id="main-content">
-    <a href="index.html" class="back-link">← Back to Home</a>
-
-    <h1>Download Map & Flyer</h1>
-
-    <a href="assets/flyer/flyer.png" download class="download-btn">Download Flyer (PNG)</a>
-
-    <figure style="margin: 2rem 0; text-align: center;">
-      <img src="assets/flyer/flyer.png" alt="Red Bird Trail Flyer preview" width="1700" height="2560" loading="lazy" class="flyer-preview">
-      <figcaption style="color: var(--rb-cream); margin-top: 1rem; font-style: italic; text-shadow: 0 2px 6px var(--rb-shadow);">Official Red Bird Trick-or-Treat Trail flyer with map and participating houses</figcaption>
-    </figure>
-  </main>
-  <a href="index.html" class="home-fab" title="Back to home">🏠</a>
+  <div class="controls">
+    <a href="index.html" class="btn btn-secondary">← Home</a>
+    <button onclick="window.print()" class="btn">🖨️ Print Flyer</button>
+    <a href="assets/flyer/halloween_event_flyer.jpg" download="Red_Bird_Halloween_Trail_Flyer.jpg" class="btn">⬇️ Download</a>
+  </div>
+  
+  <div class="flyer-container">
+    <img src="assets/flyer/halloween_event_flyer.jpg" alt="Red Bird Trick-or-Treat Trail Event Flyer" class="flyer-image">
+  </div>
 </body>
 </html>

@@ -8,7 +8,7 @@
   <!-- Open Graph / Social -->
   <meta property="og:title" content="Red Bird Trick-or-Treat Trail">
   <meta property="og:description" content="Join the Red Bird neighborhood for a family-friendly Halloween trick-or-treat trail with participating houses and festive decorations.">
-  <meta property="og:image" content="assets/flyer/flyer.png">
+  <meta property="og:image" content="assets/flyer/halloween_event_flyer.jpg">
   <meta property="og:type" content="event">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Red Bird Trick-or-Treat Trail">
@@ -63,28 +63,32 @@
   </div>
 
   <script>
-    // Lightweight view counter using CountAPI with localStorage fallback
+    // View counter using localStorage with session tracking
     (function(){
-      const key = 'red-bird-trail-main';
+      const key = 'red-bird-trail-views';
+      const sessionKey = 'red-bird-trail-session';
       const counterEl = document.getElementById('rb-counter');
 
-      // Try CountAPI first (no key/secret needed for public counters)
-      fetch('https://api.countapi.xyz/hit/pdarleyjr/red-bird-trail')
-        .then(r => r.json())
-        .then(data => {
-          if (data && data.value != null) {
-            counterEl.textContent = data.value;
-            try { localStorage.setItem(key, data.value); } catch(e){}
-          }
-        })
-        .catch(() => {
-          // fallback to localStorage stored value or 1
-          try {
-            const v = parseInt(localStorage.getItem(key) || '1', 10) + 1;
-            localStorage.setItem(key, v);
-            counterEl.textContent = v;
-          } catch(e) { counterEl.textContent = '—'; }
-        });
+      try {
+        // Check if this is a new session
+        const hasVisitedThisSession = sessionStorage.getItem(sessionKey);
+        
+        if (!hasVisitedThisSession) {
+          // New session - increment counter
+          const currentCount = parseInt(localStorage.getItem(key) || '0', 10);
+          const newCount = currentCount + 1;
+          localStorage.setItem(key, newCount);
+          sessionStorage.setItem(sessionKey, 'true');
+          counterEl.textContent = newCount.toLocaleString();
+        } else {
+          // Existing session - just display current count
+          const currentCount = parseInt(localStorage.getItem(key) || '0', 10);
+          counterEl.textContent = currentCount.toLocaleString();
+        }
+      } catch(e) {
+        // Fallback if storage is not available
+        counterEl.textContent = '—';
+      }
     })();
 
     // Halloween countdown timer (Oct 31, 2025 at 6pm local time)
