@@ -181,8 +181,8 @@ a:hover {
    ============================================ */
 @media (max-width: 899.98px) {
   .hero-btn-about {
-    left: 9.5%;
-    bottom: 32%;
+    left: 13%;
+    bottom: 38%;
     width: 20%;
     height: 4.5%;
     min-width: 60px;
@@ -190,8 +190,8 @@ a:hover {
   }
   
   .hero-btn-map {
-    left: 35%;
-    bottom: 32%;
+    left: 38.5%;
+    bottom: 38%;
     width: 20%;
     height: 4.5%;
     min-width: 60px;
@@ -199,8 +199,8 @@ a:hover {
   }
   
   .hero-btn-flyer {
-    left: 60.5%;
-    bottom: 32%;
+    left: 64%;
+    bottom: 38%;
     width: 20%;
     height: 4.5%;
     min-width: 60px;
