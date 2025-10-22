@@ -63,32 +63,40 @@
   </div>
 
   <script>
-    // View counter using localStorage with session tracking
+    // View counter using simple-web-counter API
     (function(){
-      const key = 'red-bird-trail-views';
-      const sessionKey = 'red-bird-trail-session';
       const counterEl = document.getElementById('rb-counter');
-
-      try {
-        // Check if this is a new session
-        const hasVisitedThisSession = sessionStorage.getItem(sessionKey);
-        
-        if (!hasVisitedThisSession) {
-          // New session - increment counter
-          const currentCount = parseInt(localStorage.getItem(key) || '0', 10);
-          const newCount = currentCount + 1;
-          localStorage.setItem(key, newCount);
-          sessionStorage.setItem(sessionKey, 'true');
-          counterEl.textContent = newCount.toLocaleString();
-        } else {
-          // Existing session - just display current count
-          const currentCount = parseInt(localStorage.getItem(key) || '0', 10);
-          counterEl.textContent = currentCount.toLocaleString();
-        }
-      } catch(e) {
-        // Fallback if storage is not available
-        counterEl.textContent = '—';
-      }
+      const counterId = 'red-bird-halloween-trail';
+      
+      // Try to fetch count from simple-web-counter
+      fetch(`https://api.counterapi.dev/v1/red-bird-trail/views/up`, {
+        method: 'GET'
+      })
+        .then(r => r.json())
+        .then(data => {
+          if (data && data.count != null) {
+            counterEl.textContent = data.count.toLocaleString();
+          } else {
+            counterEl.textContent = '—';
+          }
+        })
+        .catch(() => {
+          // Fallback to localStorage if API fails
+          try {
+            const sessionKey = 'rb-session';
+            const hasVisited = sessionStorage.getItem(sessionKey);
+            if (!hasVisited) {
+              const count = parseInt(localStorage.getItem('rb-views') || '0', 10) + 1;
+              localStorage.setItem('rb-views', count);
+              sessionStorage.setItem(sessionKey, '1');
+              counterEl.textContent = count.toLocaleString();
+            } else {
+              counterEl.textContent = (localStorage.getItem('rb-views') || '0');
+            }
+          } catch(e) {
+            counterEl.textContent = '—';
+          }
+        });
     })();
 
     // Halloween countdown timer (Oct 31, 2025 at 6pm local time)
