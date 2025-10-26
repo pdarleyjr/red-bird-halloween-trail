@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import Papa from "papaparse";
 
-const input = "C:/Users/Peter Darley/Desktop/DEV/Halloween website/Red_Bird_Trick-or-Treat_Trail_2025-10-21_07_34_48.csv";
+const input = "C:/Users/Peter Darley/Downloads/Red_Bird_Trick-or-Treat_Trail_2025-10-24_07_59_03(1).csv";
 const output = "data/participants.csv";
 
 console.log("Reading CSV file...");
