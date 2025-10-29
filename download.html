@@ -7,7 +7,7 @@
   <meta name="description" content="Download and print the official Red Bird neighborhood trick-or-treat trail flyer for Halloween.">
   <meta property="og:title" content="Event Flyer - Red Bird Trick-or-Treat Trail">
   <meta property="og:description" content="Download and print the official Red Bird neighborhood trick-or-treat trail flyer for Halloween.">
-  <meta property="og:image" content="assets/flyer/halloween_event_flyer.jpg">
+  <meta property="og:image" content="assets/flyer/halloween_event_flyer.pdf">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/brand/Red_Bird_Logo.png">
   <link rel="manifest" href="/manifest.json">
@@ -36,12 +36,14 @@
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
       border-radius: 8px;
       overflow: hidden;
+      min-height: 80vh;
     }
     
     .flyer-image {
       width: 100%;
-      height: auto;
+      height: 80vh;
       display: block;
+      border: none;
     }
     
     .controls {
@@ -132,11 +134,11 @@
   <div class="controls">
     <a href="index.html" class="btn btn-secondary">← Home</a>
     <button onclick="window.print()" class="btn">🖨️ Print Flyer</button>
-    <a href="assets/flyer/halloween_event_flyer.jpg" download="Red_Bird_Halloween_Trail_Flyer.jpg" class="btn">⬇️ Download</a>
+    <a href="assets/flyer/halloween_event_flyer.pdf" download="Red_Bird_Halloween_Trail_Flyer.pdf" class="btn">⬇️ Download</a>
   </div>
   
   <div class="flyer-container">
-    <img src="assets/flyer/halloween_event_flyer.jpg" alt="Red Bird Trick-or-Treat Trail Event Flyer" class="flyer-image">
+    <embed src="assets/flyer/halloween_event_flyer.pdf" type="application/pdf" class="flyer-image" alt="Red Bird Trick-or-Treat Trail Event Flyer">
   </div>
 </body>
 </html>
